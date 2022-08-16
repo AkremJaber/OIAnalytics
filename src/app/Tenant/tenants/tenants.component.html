@@ -1,0 +1,18 @@
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">Tenants</h1>
+</div>
+<div class="col-md-6">
+    <table class="table">
+        <thead class="head-light">
+            <tr>
+                <th>Tenant Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pd of service.tenantList">
+                <td>{{pd.ccC_Name}}</td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
