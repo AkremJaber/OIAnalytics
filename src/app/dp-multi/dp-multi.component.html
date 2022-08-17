@@ -1,13 +1,13 @@
 <h2>Persons</h2>
 
 <select name="my-select" [(ngModel)]="mySelect" (change)="selectChange()" multiple="multiple">
-  <option [value]="item.centralAccount" *ngFor="let item of service.list">
+  <option [value]="item.uiD_Person" *ngFor="let item of thp">
       {{item.centralAccount}}
   </option>
 </select>
 
 
-<h4>Selected Persons:</h4>    
+<h4>Selected Persons:</h4>
 
 <ng-container>
   <div>
@@ -24,27 +24,23 @@
 </ng-template>
 
 <h2>Tenants</h2>
-
-<select name="my-select" [(ngModel)]="mySelect" (change)="selectChange()" multiple="multiple">
-  <option [value]="item.uiD_CCCTenants" *ngFor="let item of service.listTenants">
-      {{item.ccC_Name}}
+<select name="my-selectt" [(ngModel)]="mySelectTenant" (change)="selectChangeTenant()" multiple="multiple">
+  <option [value]="itemt.uiD_CCCTenants" *ngFor="let itemt of t">
+      {{itemt.ccC_Name}}
   </option>
 </select>
-
-
-<h4>Selected Persons:</h4>    
-
-<ng-container>
+<h4>Selected Tenants:</h4>    
+<ng-container >
   <div>
       Selected:
       <ul>
-          <li *ngFor="let SelVal of selectedValue">{{SelVal.ccC_Name}}</li>
+          <li *ngFor="let SelValT of selectedValueTenant">{{SelValT.ccC_Name}}</li>
       </ul>
   </div>
 </ng-container>
-<ng-template #elseTemplate>
+<ng-template #elseTemplateT>
   <div>
-      Selected: {{selectedValue}}
+      Selected: {{selectedValueTenant}}
   </div>
 </ng-template>
 
