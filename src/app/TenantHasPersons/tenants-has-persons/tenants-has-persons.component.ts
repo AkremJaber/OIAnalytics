@@ -9,9 +9,30 @@ import { TenantsHasPersonsService } from 'src/app/Shared/Services/TenantsHasPers
 export class TenantsHasPersonsComponent implements OnInit {
 
   constructor(public service:TenantsHasPersonsService) { }
+  // public thp:any;
+  // public t:any;
 
-  ngOnInit(): void {
-    this.service.refreshList();
+  // delThpForm(id:any){
+  //   this.service.deleteTHP(id).subscribe((res)=>{
+  //     console.warn(res)
+  //   })
+  //  }
+  deleteTHP(id:any){
+    console.log(id)
+    if(confirm('Are you sure you want to delete this record ?'))
+    {
+    this.service.deleteTHP(id).subscribe()
+    }
   }
+  
+  ngOnInit(): void {
+    //this.service.getTHPbyUID('');
+    this.service.refreshList();
+    
+    //this.service.deleteTHP(''); 
+  }
+  // onDelete(id:any): void {
+  //   this.service.deleteTHP(id);
+  // }
 
 }

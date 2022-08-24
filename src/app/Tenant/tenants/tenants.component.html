@@ -6,13 +6,25 @@
         <thead class="head-light">
             <tr>
                 <th>Tenant Name</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let pd of service.tenantList">
+            <tr *ngFor="let pd of t">
                 <td>{{pd.ccC_Name}}</td>
+                <td> <button class="btn-delete" (click)="deleteTenant(pd.ccC_WorkspaceId)" > Delete </button> </td>
                 
             </tr>
         </tbody>
     </table>
+    <div class="container">
+        <div class="form-area">
+            <h2> Create Tenant</h2>
+            <form #tenantForm="ngForm" (ngSubmit)="onTenantCreate()" >
+                <label>Tenant Name</label>
+                <input type="text" [(ngModel)]="e" name="tName" >
+                <input type="submit" value="Create Tenant">
+            </form>
+        </div>
+    </div>
 </div>

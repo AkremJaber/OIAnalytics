@@ -17,10 +17,20 @@ export class TenantService {
   getTenantbyUID(id:string):any{
     return this.http.get<Tenant>(this.getTenant+'/'+id)
   }
-  getTenants(){
-    const res= this.http.get(this.getTenant)
-    .toPromise()
-    .then(res => {this.tenantList = res as Tenant[]});
+
+  getTenants():any{
+    return this.http.get(this.getTenant)
+  }
+
+  deleteTenant(id:any){
+    return this.http.delete(this.getTenant+'/'+id)
+  }
+
+  createTenant(ccc_Name:string){
+    const postData = {
+      ccC_Name :ccc_Name
+    }
+    return this.http.post(this.getTenant,postData)
   }
 
 }
