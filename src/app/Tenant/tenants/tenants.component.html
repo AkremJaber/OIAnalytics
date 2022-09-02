@@ -1,19 +1,55 @@
 <div class="jumbotron py-3">
     <h1 class="display-4 text-center">Tenants</h1>
 </div>
+<form #thpForm="ngForm" (ngSubmit)="AddAdmin(thpForm.value.SelValT,thpForm.value.SelValUser)">
+<select name="my-selectt" [(ngModel)]="mySelectTenant" (change)="selectChangeTenant()" multiple="multiple">
+    <option [value]="itemt.ccC_WorkspaceId" *ngFor="let itemt of t">
+        {{itemt.ccC_Name}}
+    </option>
+  </select>
+  <h4>Selected Tenants:</h4>    
+  <ng-container >
+    <div>
+        Selected:
+        <ul>
+            <li *ngFor="let SelValT of selectedValueTenant">{{SelValT.ccC_Name}}</li>
+        </ul>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplateT>
+    <div>
+        Selected:{{selectedValueTenant}} 
+    </div>
+  </ng-template>
+
+      <select name="users" [(ngModel)]="userSelect" (change)="selectChangeUser()" > 
+        <option [value]="varTest1.name" *ngFor="let varTest1 of emails">{{varTest1.name}}</option>
+      </select>
+      <ng-container >
+        <div>
+            Selected:
+            <ul>
+                <li *ngFor="let SelValUser of selectedValueUser">{{SelValUser.name}}</li>
+            </ul>
+        </div>
+      </ng-container>
+      <button>Submit</button>
+    
+    </form>
+
 <div class="col-md-6">
     <table class="table">
         <thead class="head-light">
             <tr>
                 <th>Tenant Name</th>
                 <th>Delete</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let pd of t">
                 <td>{{pd.ccC_Name}}</td>
-                <td> <button class="btn-delete" (click)="deleteTenant(pd.ccC_WorkspaceId)" > Delete </button> </td>
-                
+                <td> <button class="btn-delete" (click)="deleteTenant(pd.ccC_WorkspaceId)"> Delete </button> </td>
             </tr>
         </tbody>
     </table>
@@ -23,8 +59,9 @@
             <form #tenantForm="ngForm" (ngSubmit)="onTenantCreate()" >
                 <label>Tenant Name</label>
                 <input type="text" [(ngModel)]="e" name="tName" >
-                <input type="submit" value="Create Tenant">
+                <input type="submit" value="Create Tenant">             
             </form>
+
         </div>
     </div>
 </div>

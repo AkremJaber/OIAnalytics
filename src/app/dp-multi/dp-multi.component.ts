@@ -50,7 +50,7 @@ export class DpMultiComponent implements OnInit {
    selectChangeTenant() {
        this.selectedValueTenant = this.service.getDropDownTextTenant(this.mySelectTenant,this.t );
    }
-   
+
    getThpForm(a:any,b:any){
     a=this.selectedValue[0].uiD_Person
     b=this.selectedValueTenant[0].uiD_CCCTenants
